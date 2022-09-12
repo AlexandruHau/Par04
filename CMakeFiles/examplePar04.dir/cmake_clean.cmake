@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/examplePar04.dir/examplePar04.cc.o"
+  "CMakeFiles/examplePar04.dir/examplePar04.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04ActionInitialisation.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04ActionInitialisation.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04DefineMeshModel.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04DefineMeshModel.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04DetectorConstruction.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04DetectorConstruction.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04DetectorMessenger.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04DetectorMessenger.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04EventAction.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04EventAction.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04EventInformation.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04EventInformation.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04Hit.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04Hit.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04InferenceMessenger.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04InferenceMessenger.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04InferenceSetup.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04InferenceSetup.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04LwtnnInference.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04LwtnnInference.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04MLFastSimModel.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04MLFastSimModel.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04OnnxInference.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04OnnxInference.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04PrimaryGeneratorAction.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04PrimaryGeneratorAction.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04RunAction.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04RunAction.cc.o.d"
+  "CMakeFiles/examplePar04.dir/src/Par04SensitiveDetector.cc.o"
+  "CMakeFiles/examplePar04.dir/src/Par04SensitiveDetector.cc.o.d"
+  "examplePar04"
+  "examplePar04.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/examplePar04.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/CMakeFiles/examplePar04onnxdata"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/CMakeFiles/examplePar04onnxdata.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/CMakeFiles/examplePar04onnxdata-complete.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-build.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-configure.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-download.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-install.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-mkdir.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-patch.rule"
+		},
+		{
+			"file" : "/afs/cern.ch/user/a/ahau/Par04/examplePar04onnxdata-prefix/src/examplePar04onnxdata-stamp/examplePar04onnxdata-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"examplePar04onnxdata"
+		],
+		"name" : "examplePar04onnxdata"
+	}
+}

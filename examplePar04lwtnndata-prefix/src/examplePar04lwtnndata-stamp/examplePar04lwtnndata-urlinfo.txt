@@ -1,0 +1,3 @@
+repository='external project URL'
+module='https://cern.ch/geant4-data/datasets/examples/extended/parameterisations/Par04/Generator.json'
+tag='MD5=af94b1130347428e2e6030930c1ac2cc'
