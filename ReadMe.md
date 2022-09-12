@@ -32,37 +32,41 @@ Finally, now the cmake command can be implemented in order to actually run the b
 
 ```
 cmake -DGeant4_DIR=/cvmfs/geant4.cern.ch/geant4/11.0/x86_64-centos7-gcc10-optdeb/lib64/Geant4-11.0 $HOME/Par04
+make
 ```
 
-For the best performance of the simulation, it is most suitable if the 0-value is introduced in cae the points A,C,E or F are run. The 1-value should be introduced only for point B, as the function for B is implemented in the part C.
+##### Note: 
 
-### Question 1 a)
+Move the following .mac files from the Par04 folder to the Par04_build: 
+```
+my_new_vis.mac
+my_onnx_sims.mac
+```
 
-### Question 1 b)
+Also move the following .C file from the Par04 directory to the build, as well as the constructed .gdml file for the detector:
+```
+AnalyseEnergyBox.C
+NewCLIC.gdml
+```
 
-Initially, the system is dominated by the 0-state, when neither a, nor b or c yield 
-high values. After a short time, however, the 0-state is quickly destroyed, and the states 1, 2 and 3 co-exist until one of them eventually destroys the others. Afterwards, the system reaches an absorbing state. A screenshot is provided with the system update of the three chemical species, where two of them are annihilated and one completely dominates. 
+##### Detector visualization on G4
+
+The build is now properly run. For visualizing the detector only, run the following command:
+```
+./examplePar04 -i -m my_new_vis.mac
+```
+
+##### ONNX Runtime G4 Simulations
+
+For running the Fast Simulations on G4, run the following inside the build:
+```
+./examplePar04 -m my_onnx_sims.mac
+```
+
+
 
 ![ScreenShot](300GeV.png)
 
-### Question 1 c)
-
-Mean lifetime of a system is: 1641.5 time steps and the error on the lifetime calculating through the error on the mean formula is: 310.922 time steps 
-
-### Question 1 d)
-
-For the new set of parameters, the 0-state is quickly killed and the states 1, 2 and 3 infinitely co-exist.
-
-### Question 1 e)
-
-The plot with the peaks for the two points is provided below: this is done for simulation of 5000 timesteps, for the new set of parameters for D, p and q. The periods are approximately similar, with 15 peaks in 5000 time steps, yielding a time period of $\frac{5000}{15} = 333$ seconds.
-
 ![ScreenShot](300GeV_G4_ONNX.png)
-
-### Question 1 f)
-
-The two-point correlation function has been analysed as function of distance. Firstly, one random point has been taken. Afterwards, points at the distances 1,2,..,25 on x-axis have been taken wrt the original point. For **each** of these distances, a simulation of 1000 time steps has been conducted and the probability of two cells being the same has been computed.
-
-The results are shown below: for D = 0.5 yield negative correlation coefficient of -0.56 and for D = 0.3 yield negative correlation coefficient of -0.69
 
 ![ScreenShot](G4_global_coords.png)

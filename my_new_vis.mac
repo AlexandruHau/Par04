@@ -1,0 +1,13 @@
+# Initialize the whole geometry setup
+/run/initialize
+
+# create empty scene
+/vis/scene/create
+
+# Create a scene handler for a specific graphics system
+/vis/open OGL
+
+# draw scene
+/vis/viewer/zoom 1.4
+/vis/viewer/flush
+
