@@ -63,7 +63,13 @@ For running the Fast Simulations on G4, run the following inside the build:
 ./examplePar04 -m my_onnx_sims.mac
 ```
 
+The data generated from the integrated 3D-GAN network in G4 is stored in the following file: ONNXInference.root. A .C file has been designed for further analysis on ROOT. However, the plots have been much clearer on Python Jupyter Notebooks, hence the .C file has only been designed to store the data in .txt format for the next load into the jupyter notebook. However, the .C can be further modified for ROOT visualizations. For this program to run until the finish, do in the same build directory the following:
 
+```
+root AnalyseEnergyBox.C
+```
+
+Afterwards, open the Jupyter Notebook from the Par04 repository and run it. The plots below will be found on the Jupyter Notebook as well (the jupyter notebook can be run separately - best case scenario, scp it on the local machine and run it there):
 
 ![ScreenShot](300GeV.png)
 
