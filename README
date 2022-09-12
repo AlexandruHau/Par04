@@ -1,6 +1,8 @@
-I have conducted this project during my internship this summer as Openlab Intern within the CERN Data Centre. This work has been done within the context of the CLIC prototype - LInear Particle Accelerator which will start being built in 2026. 
-For running the project, the build files need to be created, hence run the following commands:
-```
+I have conducted this project during my internship this summer as Openlab Intern within the CERN Data Centre. This work has been done within the context of the CLIC prototype - LInear Particle Accelerator which will start being built in 2026. For running the project, the build files need to be created, hence run the following commands:
+
 mkdir Par04_build 
 cd Par04_build
-```
+
+Note: when running the commands above, you need to be in a separate folder from the Par04 directory.
+
+Afterwa
