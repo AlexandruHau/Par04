@@ -41,6 +41,8 @@ Move the following .mac files from the Par04 folder to the Par04_build:
 ```
 my_new_vis.mac
 my_onnx_sims.mac
+my_full_sims.mac
+my_full_vis.mac
 ```
 
 Also move the following .C file from the Par04 directory to the build, as well as the constructed .gdml file for the detector:
