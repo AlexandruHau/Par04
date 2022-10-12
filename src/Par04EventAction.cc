@@ -56,6 +56,7 @@ Par04EventAction::Par04EventAction(Par04DetectorConstruction* aDetector)
   , fTimer()
   , fDetector(aDetector)
 {
+/*
   fCellNbRho = aDetector->GetMeshNbOfCells().x();
   fCellNbPhi = aDetector->GetMeshNbOfCells().y();
   fCellNbZ   = aDetector->GetMeshNbOfCells().z();
@@ -63,6 +64,7 @@ Par04EventAction::Par04EventAction(Par04DetectorConstruction* aDetector)
   fCalRho.reserve(fCellNbRho * fCellNbPhi * fCellNbZ);
   fCalPhi.reserve(fCellNbRho * fCellNbPhi * fCellNbZ);
   fCalZ.reserve(fCellNbRho * fCellNbPhi * fCellNbZ);
+*/
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -96,6 +98,7 @@ void Par04EventAction::EndOfEventAction(const G4Event* aEvent)
   }
 
   // Get analysis manager
+  /*
   auto analysisManager = G4AnalysisManager::Instance();
   // Retrieve only once detector dimensions
   if(fCellSizeZ == 0)
@@ -156,11 +159,15 @@ void Par04EventAction::EndOfEventAction(const G4Event* aEvent)
       tFirstMoment += hitEn * tDistance;
       rFirstMoment += hitEn * rDistance;
       phiMean += hitEn * phiDistance;
-      /*
+      */
+
+      /* 
       analysisManager->FillH1(4, tDistance, hitEn);
       analysisManager->FillH1(5, rDistance, hitEn);
       analysisManager->FillH1(10, hitType);
       */
+
+      /*
       if(hitEn > 0.0005)
       {  // e > 0.5 keV
         fCalEdep[numNonZeroThresholdCells] = hitEn;
@@ -175,6 +182,8 @@ void Par04EventAction::EndOfEventAction(const G4Event* aEvent)
   tFirstMoment /= totalEnergy;
   rFirstMoment /= totalEnergy;
   phiMean /= totalEnergy;
+  */
+
   /*
   analysisManager->FillH1(0, primaryEnergy / GeV);
   analysisManager->FillH1(1, totalEnergy / GeV);
@@ -184,17 +193,22 @@ void Par04EventAction::EndOfEventAction(const G4Event* aEvent)
   analysisManager->FillH1(7, rFirstMoment);
   analysisManager->FillH1(12, numNonZeroThresholdCells);
   */
+
+  /*
   // Resize to store only energy hits above threshold
   fCalEdep.resize(numNonZeroThresholdCells);
   fCalRho.resize(numNonZeroThresholdCells);
   fCalPhi.resize(numNonZeroThresholdCells);
   fCalZ.resize(numNonZeroThresholdCells);
+  */
+
   /*
   analysisManager->FillNtupleDColumn(0, primaryEnergy);
   analysisManager->FillNtupleDColumn(5, fTimer.GetRealElapsed());
   */
 
   // Second loop over hits to calculate second moments
+  /*
   for(size_t iHit = 0; iHit < hitsCollection->entries(); iHit++)
   {
     hit    = static_cast<Par04Hit*>(hitsCollection->GetHit(iHit));
@@ -214,6 +228,8 @@ void Par04EventAction::EndOfEventAction(const G4Event* aEvent)
   }
   tSecondMoment /= totalEnergy;
   rSecondMoment /= totalEnergy;
+  */
+
   /*
   analysisManager->FillH1(8, tSecondMoment);
   analysisManager->FillH1(9, rSecondMoment);

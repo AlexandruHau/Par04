@@ -38,6 +38,7 @@
 #include "Par04InferenceSetup.hh"        // for Par04InferenceSetup
 #include "G4UnitsTable.hh"
 #include "G4AnalysisManager.hh"
+#include "Par04Hit.hh"
 class G4ParticleDefinition;
 class G4Region;
 
@@ -116,12 +117,19 @@ void Par04MLFastSimModel::DoIt(const G4FastTrack& aFastTrack, G4FastStep& aFastS
     fHitMaker->make(G4FastHit(fPositions[iHit], fEnergies[iHit]), aFastTrack);
     // G4cout << "Energy hit: " << G4BestUnit(fEnergies[iHit], "Energy") << " of energy value: " << fEnergies[iHit] <<  G4endl;
     // G4cout << "Count: " << iHit << G4endl;
-    G4cout << "x-coordinate: " << G4BestUnit(fPositions[iHit].getX(), "Length") << " of coordinate value: "
-	   << fPositions[iHit].getX()  << G4endl;
-    G4cout << "y-coordinate: " << G4BestUnit(fPositions[iHit].getY(), "Length") << " of coordinate value: " 
-           << fPositions[iHit].getY()  << G4endl; 
-    G4cout << "z-coordinate: " << G4BestUnit(fPositions[iHit].getZ(), "Length") << " of coordinate value: " 
-           << fPositions[iHit].getZ()  << G4endl;
+    // G4cout << "x-coordinate: " << G4BestUnit(fPositions[iHit].getX(), "Length") << " of coordinate value: "
+	   // << fPositions[iHit].getX()  << G4endl;
+    // G4cout << "y-coordinate: " << G4BestUnit(fPositions[iHit].getY(), "Length") << " of coordinate value: " 
+           // << fPositions[iHit].getY()  << G4endl; 
+    // G4cout << "z-coordinate: " << G4BestUnit(fPositions[iHit].getZ(), "Length") << " of coordinate value: " 
+           // << fPositions[iHit].getZ()  << G4endl;
+
+    // Create hits object for drawing on G4
+    Par04Hit* hit = new Par04Hit();
+    hit->SetPos(G4ThreeVector(fPositions[iHit].getX(), fPositions[iHit].getY(), fPositions[iHit].getZ()));
+    hit->SetEdep(fEnergies[iHit]);
+    hit->Draw();
+
     analysisManager->FillH1(0, fEnergies[iHit]);
     analysisManager->FillNtupleDColumn(0, fEnergies[iHit]);
     analysisManager->FillNtupleDColumn(1, fPositions[iHit].getX());

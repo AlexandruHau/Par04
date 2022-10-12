@@ -50,7 +50,7 @@ Par04PrimaryGeneratorAction::Par04PrimaryGeneratorAction()
   G4ParticleDefinition* particle = particleTable->FindParticle(particleName = "e-");
   fParticleGun->SetParticleDefinition(particle);
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0., 1., 0.));
-  fParticleGun->SetParticleEnergy(10. * GeV);
+  fParticleGun->SetParticleEnergy(300. * GeV);
   fParticleGun->SetParticlePosition(G4ThreeVector(0., 0., 0.));
 }
 

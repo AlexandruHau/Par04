@@ -68,6 +68,7 @@ void Par04RunAction::BeginOfRunAction(const G4Run*)
   analysisManager->SetVerboseLevel(0);
 
   // Get detector dimensions
+  /*
   G4int cellNumZ       = fDetector->GetMeshNbOfCells().z();
   G4int cellNumRho     = fDetector->GetMeshNbOfCells().x();
   G4int cellNumPhi     = fDetector->GetMeshNbOfCells().y();
@@ -76,6 +77,7 @@ void Par04RunAction::BeginOfRunAction(const G4Run*)
   G4double cellSizePhi = fDetector->GetMeshSizeOfCells().y();
   // Default max value of energy stored in histogram (in GeV)
   G4double maxEnergy = 1000;
+  */
   
   // Create the H1 histogram
   analysisManager->CreateH1("Infered_energy", "Inference Energy", 100, 0., 1.0*MeV);

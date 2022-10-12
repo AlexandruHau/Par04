@@ -44,7 +44,10 @@
 #include "G4VVisManager.hh"                // for G4VVisManager
 #include "G4VisAttributes.hh"              // for G4VisAttributes
 #include <cmath>                           // for log10
+#include "G4UnitsTable.hh"
+#include "G4Point3D.hh"
 template <class Type> class G4Allocator;
+class G4Circle;
 
 G4ThreadLocal G4Allocator<Par04Hit>* Par04HitAllocator;
 
@@ -112,14 +115,16 @@ void Par04Hit::Draw()
   if(fEdep <= 0)
     return;
   // Do not plot if default values were not changed
-  if(fRhoId == -1 && fZId == -1 && fPhiId == -1)
-    return;
+  // if(fRhoId == -1 && fZId == -1 && fPhiId == -1)
+  //   return;
   if(pVVisManager)
   {
+    
     G4Transform3D trans(fRot, fPos);
     G4VisAttributes attribs;
-    G4Tubs solid("draw", fRhoId * meshSize.x(), (fRhoId + 1) * meshSize.x(), meshSize.z() / 2.,
-                 (-numPhiCells / 2. + fPhiId) * meshSize.y(), meshSize.y());
+    // G4Tubs solid("draw", meshSize.x(), 10 * meshSize.x(), meshSize.z() / 2.,
+                // (-numPhiCells / 2. + 1) * meshSize.y(), meshSize.y());
+    G4Tubs solid("draw", 0.5, 5, 5, 0, 360);
     // Set colours depending on type of hit (full/fast sim)
     G4double colR = fType == 0 ? 0 : 1;
     G4double colG = fType == 0 ? 1 : 0;
@@ -128,10 +133,24 @@ void Par04Hit::Draw()
     // Arbitrary formula
     G4double alpha = 2 * std::log10(fEdep + 1);
     G4cout << "alpha = " << alpha << G4endl;
+    G4cout << "x hit: " <<  G4BestUnit(fPos.getX(), "Length") << G4endl;
+    G4cout << "y hit: " << G4BestUnit(fPos.getY(), "Length") << G4endl;
+    G4cout << "z hit: " << G4BestUnit(fPos.getZ(), "Length") << G4endl;
     G4Colour colour(colR, colG, colB, alpha);
     attribs.SetColour(colour);
     attribs.SetForceSolid(true);
     pVVisManager->Draw(solid, attribs, trans);
+    
+    /*
+    G4Point3D point = G4Point3D(fPos.getX(), fPos.getY(), fPos.getZ());
+    G4Circle circle(G4Point3D(fPos.getX(), fPos.getY(), fPos.getZ()));
+    circle.SetScreenSize(0.3);
+    circle.SetFillStyle(G4Circle::filled);
+    G4Color color(1.,0.,0.);
+    G4VisAttributes attribs(color);
+    circle.SetVisAttributes(attribs);
+    pVVisManager->Draw(circle);
+    */
   }
 }
 

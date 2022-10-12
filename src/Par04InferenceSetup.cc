@@ -161,6 +161,72 @@ void Par04InferenceSetup::GetPositions(std::vector<G4ThreeVector>& aPositions, G
 {
   aPositions.resize(fMeshNumber.x() * fMeshNumber.y() * fMeshNumber.z());
   
+  /*
+  // Calculate rotation matrix along the particle momentum direction
+  // It will rotate the shower axes to match the incoming particle direction
+  G4RotationMatrix rotMatrix = G4RotationMatrix();
+  double particleTheta       = direction.theta();
+  double particlePhi         = direction.phi();
+  rotMatrix.rotateZ(-particlePhi);
+  rotMatrix.rotateY(-particleTheta);
+  G4RotationMatrix rotMatrixInv = CLHEP::inverseOf(rotMatrix);
+
+  G4double a11 = -22.747;
+  G4double a12 = 31.434;
+  G4double a13 = -6.32;
+  G4double a21 = 73.765;
+  G4double a22 = 18.8682;
+  G4double a23 = 47.9675;
+  G4double a31 = 0.0524;
+  G4double a32 = -0.0944;
+  G4double a33 = 0.06681;
+
+  G4double calibration_factor = 0.5;
+
+  G4cout << "meshNumber x: " << fMeshNumber.x() << G4endl;
+  G4cout << "meshNumber y: " << fMeshNumber.y() << G4endl;
+  G4cout << "meshNumber z: " << fMeshNumber.z() << G4endl;
+
+  G4ThreeVector a1 = G4ThreeVector(a11, a12, a13);
+  G4ThreeVector a2 = G4ThreeVector(a21, a22, a23);
+  G4ThreeVector a3 = G4ThreeVector(a31, a32, a33);  
+
+  int cpt = 0;
+  for(G4int iCellR = 0; iCellR < fMeshNumber.x(); iCellR++)
+  {
+    for(G4int iCellPhi = 0; iCellPhi < fMeshNumber.y(); iCellPhi++)
+    {
+      for(G4int iCellZ = 0; iCellZ < fMeshNumber.z(); iCellZ++)
+      {
+        /*        
+        aPositions[cpt] =
+          pos0 +
+          rotMatrixInv *
+            G4ThreeVector((iCellR + 0.5) * fMeshSize.x() *
+                            std::cos((iCellPhi + 0.5) * 2 * CLHEP::pi / fMeshNumber.y() - CLHEP::pi),
+                          (iCellR + 0.5) * fMeshSize.x() *
+                            std::sin((iCellPhi + 0.5) * 2 * CLHEP::pi / fMeshNumber.y() - CLHEP::pi),
+                          (iCellZ + 0.5) * fMeshSize.z());
+
+        G4ThreeVector copyPos = G4ThreeVector(iCellR * calibration_factor,
+				 iCellPhi * calibration_factor, iCellZ * calibration_factor);
+
+        G4cout << copyPos.getX() << G4endl;
+        G4cout << copyPos.getY() << G4endl;
+        G4cout << copyPos.getZ() << G4endl;        
+
+        aPositions[cpt] = G4ThreeVector(a1.getX() * copyPos.getX() + a1.getY() * copyPos.getY() + a1.getZ() * copyPos.getZ(),
+                                        a2.getX() * copyPos.getX() + a2.getY() * copyPos.getY() + a2.getZ() * copyPos.getZ(),
+                                        a3.getX() * copyPos.getX() + a3.getY() * copyPos.getY() + a3.getZ() * copyPos.getZ());
+        */
+        /*
+        G4cout << "x inferenced coordinate: " << G4BestUnit(aPositions[cpt].getX(), "Length") << G4endl;
+        G4cout << "y inferenced coordinate: " << G4BestUnit(aPositions[cpt].getY(), "Length") << G4endl;
+        G4cout << "z inferenced coordinate: " << G4BestUnit(aPositions[cpt].getZ(), "Length") << G4endl;
+        cpt++;
+      }
+    }
+  }*/
   // Print out the pos0 vector
   G4cout << "Pos 0 - x: " << G4BestUnit(pos0.getX(), "Length") << G4endl;
   G4cout << "Pos 0 - y: " << G4BestUnit(pos0.getY(), "Length") << G4endl;

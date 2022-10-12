@@ -49,6 +49,7 @@
 #include "G4UnitsTable.hh"
 #include "G4AnalysisManager.hh"
 #include "G4RunManager.hh"
+#include "G4ParticleDefinition.hh"
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -84,9 +85,9 @@ void Par04SensitiveDetector::Initialize(G4HCofThisEvent* aHCE)
   aHCE->AddHitsCollection(fHitCollectionID, fHitsCollection);
 
   // fill calorimeter hits with zero energy deposition
-  for(G4int iphi = 0; iphi < fMeshNbOfCells.y(); iphi++)
-    for(G4int irho = 0; irho < fMeshNbOfCells.x(); irho++)
-      for(G4int iz = 0; iz < fMeshNbOfCells.z(); iz++)
+  for(G4int iphi = 0; iphi < 51; iphi++)
+    for(G4int irho = 0; irho < 51; irho++)
+      for(G4int iz = 0; iz < 25; iz++)
       {
         Par04Hit* hit = new Par04Hit();
         fHitsCollection->insert(hit);
@@ -100,20 +101,25 @@ void Par04SensitiveDetector::Initialize(G4HCofThisEvent* aHCE)
 
 G4bool Par04SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*)
 {
+  G4String name = aStep->GetTrack()->GetParticleDefinition()->GetParticleName();
+  G4cout << "Particle name: " << name << G4endl;
+
   G4double edep = aStep->GetTotalEnergyDeposit();
-  G4cout << "Deposited energy in Full Sims: " << G4BestUnit(edep, "Energy") << G4endl;
+  G4ThreeVector posn = aStep->GetPostStepPoint()->GetPosition();
+  G4cout << "Deposited energy in Full Sims: " << G4BestUnit(edep, "Energy") << " in units: " << edep << G4endl;
 
   // Implement the analysis pointer
   auto analysisManager = G4AnalysisManager::Instance();
-
+ 
   analysisManager->FillNtupleDColumn(0, edep);
 
   // Retrieve the x, y, z coordinates as well
-  G4ThreeVector posn = aStep->GetPostStepPoint()->GetPosition();
   analysisManager->FillNtupleDColumn(1, posn.getX());
   analysisManager->FillNtupleDColumn(2, posn.getY());
   analysisManager->FillNtupleDColumn(3, posn.getZ());
   analysisManager->AddNtupleRow(0);
+  
+  // G4double edep = aStep->GetTotalEnergyDeposit();
 
   if(edep == 0.)
     return true;
@@ -123,7 +129,7 @@ G4bool Par04SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*)
     return true;
 
   // Add energy deposit from G4Step
-  hit->AddEdep(edep);
+  // hit->AddEdep(edep);
 
   // Fill time information from G4Step
   // If it's already filled, choose hit with earliest global time
@@ -134,6 +140,25 @@ G4bool Par04SensitiveDetector::ProcessHits(G4Step* aStep, G4TouchableHistory*)
   // sim)
   if(hit->GetType() != 1)
     hit->SetType(0);
+
+  // Draw the hits
+  /*
+  Par04Hit* myHit = new Par04Hit();
+  myHit->SetPos(G4ThreeVector(posn.getX(), posn.getY(), posn.getZ()));
+  myHit->SetType(0);
+  myHit->SetEdep(edep);
+  myHit->Draw();
+  */
+
+  /*
+  if(edep > 0){
+    
+    hit->SetPos(G4ThreeVector(posn.getX(), posn.getY(), posn.getZ()));
+    hit->SetType(0);
+    hit->SetEdep(edep);
+    hit->Draw();
+  }
+  */
 
   return true;
 }
@@ -211,13 +236,15 @@ Par04Hit* Par04SensitiveDetector::RetrieveAndSetupHit(G4ThreeVector aGlobalPosit
   Par04Hit* hit = (*fHitsCollection)[hitID];
 
   if(hit->GetRhoId() < 0)
-  {
+  {/*
     hit->SetRhoId(rhoNo);
     hit->SetPhiId(phiNo);
     hit->SetZid(zNo);
     hit->SetRot(rotMatrixInv);
-    hit->SetPos(fEntrancePosition +
-                rotMatrixInv * G4ThreeVector(0, 0, (zNo + 0.5) * fMeshSizeOfCells.z()));
+    // hit->SetPos(fEntrancePosition +
+    //             rotMatrixInv * G4ThreeVector(0, 0, (zNo + 0.5) * fMeshSizeOfCells.z()));
+    */
+    hit->SetPos(aGlobalPosition);
   }
   return hit;
 }
