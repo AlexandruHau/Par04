@@ -1,0 +1,25 @@
+/Par04/mesh/setNbOfRhoCells 51
+/Par04/mesh/setNbOfPhiCells 51
+/Par04/mesh/setNbOfZCells 25
+
+/run/initialize
+
+# If inference model is active, de-activate it because it needs configuration
+/param/InActivateModel inferenceModel
+
+/vis/scene/create
+
+# Use this open statement to create an OpenGL view:
+/vis/open OGL 600x600-0+0
+
+# Specify view angle:
+/vis/viewer/set/viewpointThetaPhi 0 90 deg
+/vis/viewer/set/targetPoint 0 1500 0 mm
+#
+# Specify zoom value:
+/vis/viewer/zoom 8
+
+/vis/scene/add/trajectories
+
+# Draw hits at end of event:
+/vis/scene/add/hits
