@@ -6,13 +6,11 @@
 
 This project represent a part of the research activity conducted by the Geant4 group at CERN (European Council of Nuclear Research - Geneva, Switzerland). The original template from which the project has been inspired can be found [here]. The original template tests the integration of a pre-trained neural network using the ONNX Runtime Deep Learning Framework, in the context of intertwining the Monte Carlo Simulations and the Deep Learning processes. The changes to the original model are highlighted below:
 
-..* The detector from the previous model has been built using the GEANT4 API. In this project, however, the detector has been built from .XML files converted in .GDML format by using the DD4HEP (Detector Description for High Energy Physics) software.
+* The detector from the previous model has been built using the GEANT4 API. In this project, however, the detector has been built from .XML files converted in .GDML format by using the DD4HEP (Detector Description for High Energy Physics) software.
 
-..* The neural network itself has been changed - the mother template uses a Variational Autoencoder network. For this project, a 3D Generative Adversarial Network (3DGAN) has been implemented. As a result, the input array size and elements for the 3DGAN have been changed - the first two elements of the input vector represent the incident energy and angle for the particle. The rest of the elements stand for gaussian noise of parameters $(\mu = 0, \sigma = 1, N = 254)$.
+* The neural network itself has been changed - the mother template uses a Variational Autoencoder network. For this project, a 3D Generative Adversarial Network (3DGAN) has been implemented. As a result, the input array size and elements for the 3DGAN have been changed - the first two elements of the input vector represent the incident energy and angle for the particle. The rest of the elements stand for gaussian noise of parameters $(\mu = 0, \sigma = 1, N = 254)$.
 
-..* The output of the neural network represents a tensor of shape $(1, 51, 51, 25, 1)$. This tensor has been placed in the detector frame with the x and z values corresponding approximately between $(0 - 10)$mm, and the y values correspond to the values $(1.5 - 1.62)$m. 
-
-..* 
+* The output of the neural network represents a tensor of shape $(1, 51, 51, 25, 1)$. This tensor has been placed in the detector frame with the x and z values corresponding approximately between $(0 - 10)$mm, and the y values correspond to the values $(1.5 - 1.62)$m. 
 
 ### Instructions for running the code
 
