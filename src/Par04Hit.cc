@@ -67,9 +67,11 @@ Par04Hit::Par04Hit(const Par04Hit& aRight)
   : G4VHit()
 {
   fEdep   = aRight.fEdep;
+  /*
   fZId    = aRight.fZId;
   fRhoId  = aRight.fRhoId;
   fPhiId  = aRight.fPhiId;
+  */
   fTime   = aRight.fTime;
   fPos    = aRight.fPos;
   fRot    = aRight.fRot;
@@ -82,9 +84,11 @@ Par04Hit::Par04Hit(const Par04Hit& aRight)
 const Par04Hit& Par04Hit::operator=(const Par04Hit& aRight)
 {
   fEdep   = aRight.fEdep;
+  /*
   fZId    = aRight.fZId;
   fRhoId  = aRight.fRhoId;
   fPhiId  = aRight.fPhiId;
+  */
   fTime   = aRight.fTime;
   fPos    = aRight.fPos;
   fRot    = aRight.fRot;
@@ -97,7 +101,7 @@ const Par04Hit& Par04Hit::operator=(const Par04Hit& aRight)
 
 int Par04Hit::operator==(const Par04Hit& aRight) const
 {
-  return (fRhoId == aRight.fRhoId && fPhiId == aRight.fPhiId && fZId == aRight.fZId);
+  // return (fRhoId == aRight.fRhoId && fPhiId == aRight.fPhiId && fZId == aRight.fZId);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -105,9 +109,12 @@ int Par04Hit::operator==(const Par04Hit& aRight) const
 void Par04Hit::Draw()
 {
   /// Arbitrary size corresponds to the example macros
+  /*
   G4ThreeVector meshSize(2.325 * mm, 2 * CLHEP::pi / 50. * CLHEP::rad, 3.4 * mm);
   G4int numPhiCells           = CLHEP::pi * 2. / meshSize.y();
+  */
   G4VVisManager* pVVisManager = G4VVisManager::GetConcreteInstance();
+
   // Hits can be filtered out in visualisation
   if(!pVVisManager->FilterHit(*this))
     return;
@@ -187,7 +194,7 @@ std::vector<G4AttValue>* Par04Hit::CreateAttValues() const
 
 void Par04Hit::Print()
 {
-  std::cout << "\tHit " << fEdep / MeV << " MeV at " << fPos / cm << " cm rotation " << fRot
-            << " (R,phi,z)= (" << fRhoId << ", " << fPhiId << ", " << fZId << "), " << fTime << " ns"
-            << std::endl;
+  // std::cout << "\tHit " << fEdep / MeV << " MeV at " << fPos / cm << " cm rotation " << fRot
+  //           << " (R,phi,z)= (" << fRhoId << ", " << fPhiId << ", " << fZId << "), " << fTime << " ns"
+  //           << std::endl;
 }
