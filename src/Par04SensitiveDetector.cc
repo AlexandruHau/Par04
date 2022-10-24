@@ -203,14 +203,15 @@ Par04Hit* Par04SensitiveDetector::RetrieveAndSetupHit(G4ThreeVector aGlobalPosit
       G4EventManager::GetEventManager()->GetConstCurrentEvent()->GetUserInformation());
     if(info == nullptr)
       return nullptr;
-    fEntrancePosition  = info->GetPosition();
-    fEntranceDirection = info->GetDirection();
+    // fEntrancePosition  = info->GetPosition();
+    // fEntranceDirection = info->GetDirection();
   }
 
   auto delta = aGlobalPosition - fEntrancePosition;
-
+  
   // Calculate rotation matrix along the particle momentum direction
   // It will rotate the shower axes to match the incoming particle direction
+  
   G4RotationMatrix rotMatrix = G4RotationMatrix();
   double particleTheta       = fEntranceDirection.theta();
   double particlePhi         = fEntranceDirection.phi();
@@ -232,19 +233,19 @@ Par04Hit* Par04SensitiveDetector::RetrieveAndSetupHit(G4ThreeVector aGlobalPosit
   {
     return nullptr;
   }
-
   Par04Hit* hit = (*fHitsCollection)[hitID];
 
-  if(hit->GetRhoId() < 0)
-  {/*
+  // if(hit->GetRhoId() < 0)
+  /*
+  {
     hit->SetRhoId(rhoNo);
     hit->SetPhiId(phiNo);
     hit->SetZid(zNo);
     hit->SetRot(rotMatrixInv);
     // hit->SetPos(fEntrancePosition +
     //             rotMatrixInv * G4ThreeVector(0, 0, (zNo + 0.5) * fMeshSizeOfCells.z()));
-    */
     hit->SetPos(aGlobalPosition);
   }
+  */
   return hit;
 }

@@ -291,9 +291,10 @@ void Par04DetectorConstruction::ConstructSDandField()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+/*
 void Par04DetectorConstruction::Print() const
 {
-  /*
+  
   G4cout << "\n------------------------------------------------------"
          << "\n--- Detector length:\t" << G4BestUnit(fDetectorLength, "Length")
          << "\n--- Detector inner radius:\t" << G4BestUnit(fDetectorInnerRadius, "Length")
@@ -306,7 +307,7 @@ void Par04DetectorConstruction::Print() const
            << (fAbsorberSensitivity[1] ? "active " : "passive ") << fAbsorberMaterial[1]->GetName()
            << G4endl;
   G4cout << "-----------------------------------------------------" << G4endl;
-  */
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -314,7 +315,7 @@ void Par04DetectorConstruction::Print() const
 void Par04DetectorConstruction::SetAbsorberMaterial(const std::size_t aLayer, const G4String& aName)
 {
   // search material by its name
-  /*
+  
   G4Material* material = G4NistManager::Instance()->FindOrBuildMaterial(aName);
   if(material)
     fAbsorberMaterial[aLayer] = material;
@@ -322,14 +323,14 @@ void Par04DetectorConstruction::SetAbsorberMaterial(const std::size_t aLayer, co
     G4Exception("Par04DetectorConstruction::SetAbsorberMaterial()", "InvalidSetup", FatalException,
                 ("Unknown material name: " + aName).c_str());
   G4RunManager::GetRunManager()->PhysicsHasBeenModified();
-  */
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void Par04DetectorConstruction::SetAbsorberThickness(const std::size_t aLayer, const G4double aThickness)
 {
-  /*
+  
   if(aLayer < fAbsorberThickness.size())
     fAbsorberThickness[aLayer] = aThickness;
   else
@@ -339,14 +340,14 @@ void Par04DetectorConstruction::SetAbsorberThickness(const std::size_t aLayer, c
                  std::to_string(fAbsorberThickness.size()) + ").")
                   .c_str());
   G4RunManager::GetRunManager()->PhysicsHasBeenModified();
-  */
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void Par04DetectorConstruction::SetAbsorberSensitivity(const std::size_t aLayer, const G4bool aSensitivity)
 {
-  /*
+  
   if(aLayer < fAbsorberSensitivity.size())
     fAbsorberSensitivity[aLayer] = aSensitivity;
   else
@@ -356,7 +357,7 @@ void Par04DetectorConstruction::SetAbsorberSensitivity(const std::size_t aLayer,
        std::to_string(fAbsorberSensitivity.size()) + ").")
         .c_str());
   G4RunManager::GetRunManager()->PhysicsHasBeenModified();
-  */
+  
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -366,3 +367,4 @@ void Par04DetectorConstruction::SetInnerRadius(G4double aRadius) { fDetectorInne
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 void Par04DetectorConstruction::SetLength(G4double aLength) { fDetectorLength = aLength; }
+*/

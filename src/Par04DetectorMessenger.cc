@@ -50,10 +50,11 @@ Par04DetectorMessenger::Par04DetectorMessenger(Par04DetectorConstruction* aDetec
 
   fDetectorDir = new G4UIdirectory("/Par04/detector/");
   fDetectorDir->SetGuidance("Detector construction UI commands");
-
+  
   fPrintCmd = new G4UIcmdWithoutParameter("/Par04/detector/print", this);
   fPrintCmd->SetGuidance("Print current settings.");
 
+  /*
   fDetectorInnerRadiusCmd =
     new G4UIcmdWithADoubleAndUnit("/Par04/detector/setDetectorInnerRadius", this);
   fDetectorInnerRadiusCmd->SetGuidance("Set cylindrical detector inner radius");
@@ -146,6 +147,7 @@ Par04DetectorMessenger::Par04DetectorMessenger(Par04DetectorConstruction* aDetec
   fMeshSizeZCellsCmd->SetUnitCategory("Length");
   fMeshSizeZCellsCmd->AvailableForStates(G4State_PreInit);
   fMeshSizeZCellsCmd->SetToBeBroadcasted(false);
+  */
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -171,10 +173,13 @@ Par04DetectorMessenger::~Par04DetectorMessenger()
 
 void Par04DetectorMessenger::SetNewValue(G4UIcommand* aCommand, G4String aNewValue)
 {
+  /*
   if(aCommand == fPrintCmd)
   {
     fDetector->Print();
   }
+  */
+  /*
   else if(aCommand == fDetectorInnerRadiusCmd)
   {
     fDetector->SetInnerRadius(fDetectorInnerRadiusCmd->GetNewDoubleValue(aNewValue));
@@ -223,12 +228,14 @@ void Par04DetectorMessenger::SetNewValue(G4UIcommand* aCommand, G4String aNewVal
   {
     fDetector->SetMeshSizeOfCells(2, fMeshSizeZCellsCmd->GetNewDoubleValue(aNewValue));
   }
+  */
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
 G4String Par04DetectorMessenger::GetCurrentValue(G4UIcommand* aCommand)
 {
+  /*
   G4String cv;
 
   if(aCommand == fDetectorInnerRadiusCmd)
@@ -264,4 +271,5 @@ G4String Par04DetectorMessenger::GetCurrentValue(G4UIcommand* aCommand)
     cv = fMeshSizeZCellsCmd->ConvertToString(fDetector->GetMeshSizeOfCells()[2]);
   }
   return cv;
+  */
 }
