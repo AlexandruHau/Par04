@@ -2,6 +2,10 @@
 
 ## Name: Alexandru-Mihai Hau
 
+### Credits
+
+This project represent a part of the research activity conducted by the Geant4 group at CERN (European Council of Nuclear Research - Geneva, Switzerland). The original template from which the project has been inspired can be found [here] (https://gitlab.cern.ch/geant4/geant4/-/tree/master/examples/extended/parameterisations/Par04). 
+
 ### Instructions for running the code
 
 The best way to run the code is from the terminal - clone the overall repository and in the same directory with the repo, create an empty directory for the build. Type the following for creating and switching to the build directory:
