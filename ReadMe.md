@@ -6,6 +6,8 @@
 }
 </style>
 
+<div class = "new">
+
 # Integration of 3D-GAN Model into GEANT4
 
 ## Name: Alexandru-Mihai Hau
@@ -92,3 +94,5 @@ Afterwards, open the Jupyter Notebook from the Par04 repository and run it. The 
 ![ScreenShot](G4_global_coords.png)
 
 [here]: https://gitlab.cern.ch/geant4/geant4/-/tree/master/examples/extended/parameterisations/Par04
+  
+</div>
