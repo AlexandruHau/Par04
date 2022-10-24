@@ -1,3 +1,11 @@
+<style>
+.new {
+  color: black;
+  font-weight: 700;
+  font-size: 30px;
+}
+</style>
+
 # Integration of 3D-GAN Model into GEANT4
 
 ## Name: Alexandru-Mihai Hau
