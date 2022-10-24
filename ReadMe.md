@@ -4,7 +4,7 @@
 
 ### Credits
 
-This project represent a part of the research activity conducted by the Geant4 group at CERN (European Council of Nuclear Research - Geneva, Switzerland). The original template from which the project has been inspired can be found [here]: (https://gitlab.cern.ch/geant4/geant4/-/tree/master/examples/extended/parameterisations/Par04). 
+This project represent a part of the research activity conducted by the Geant4 group at CERN (European Council of Nuclear Research - Geneva, Switzerland). The original template from which the project has been inspired can be found [here]:  
 
 ### Instructions for running the code
 
@@ -82,3 +82,5 @@ Afterwards, open the Jupyter Notebook from the Par04 repository and run it. The 
 ![ScreenShot](300GeV_G4_ONNX.png)
 
 ![ScreenShot](G4_global_coords.png)
+
+[here]:(https://gitlab.cern.ch/geant4/geant4/-/tree/master/examples/extended/parameterisations/Par04)
