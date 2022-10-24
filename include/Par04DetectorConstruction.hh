@@ -80,7 +80,8 @@ class Par04DetectorConstruction : public G4VUserDetectorConstruction
 
   virtual G4VPhysicalVolume* Construct() final;
   virtual void ConstructSDandField() final;
-
+  
+  /*
   ///  Set inner radius of the cylindrical detector
   void SetInnerRadius(G4double aInnerRadius);
   /// Get inner radius of the cylindrical detector
@@ -133,10 +134,13 @@ class Par04DetectorConstruction : public G4VUserDetectorConstruction
 
   /// Print detector information
   void Print() const;
+  */
 
  private:
   const G4GDMLParser& fParser;
+  Par04DetectorMessenger* fDetectorMessenger = nullptr;
   ///  Messenger that allows to modify geometry
+  /*
   Par04DetectorMessenger* fDetectorMessenger = nullptr;
   ///  Inner radius of the cylindrical detector
   G4double fDetectorInnerRadius = 80 * cm;
@@ -156,6 +160,7 @@ class Par04DetectorConstruction : public G4VUserDetectorConstruction
   G4ThreeVector fMeshNbOfCells = { 40, 50, 48 };
   ///  Mesh size of cells (dr, dphi, dz).
   G4ThreeVector fMeshSizeOfCells = { 5 * mm, 2 * CLHEP::pi / 50 * CLHEP::rad, 5 * mm };
+  */
 };
 
 #endif /* PAR04DETECTORCONSTRUCTION_H */

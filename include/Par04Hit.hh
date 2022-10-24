@@ -89,6 +89,7 @@ class Par04Hit : public G4VHit
   /// Get energy
   inline G4double GetEdep() const { return fEdep; }
   /// Set Z id of the cell in the readout segmentation
+  /*
   inline void SetZid(G4int aZ) { fZId = aZ; }
   /// Get Z id of the cell in the readout segmentation
   inline G4int GetZid() const { return fZId; }
@@ -101,6 +102,7 @@ class Par04Hit : public G4VHit
   /// Get phi id of the cell in the readout segmentation
   inline G4int GetPhiId() const { return fPhiId; }
   /// Set time
+  */
   inline void SetTime(G4double aTime) { fTime = aTime; }
   /// Get time
   inline G4double GetTime() const { return fTime; }
@@ -116,12 +118,14 @@ class Par04Hit : public G4VHit
  public:
   /// Energy deposit
   G4double fEdep = 0;
+  /*
   /// Z ID of readout cell
   G4int fZId = -1;
   /// Rho ID of readout cell
   G4int fRhoId = -1;
   /// Phi ID of readout cell
   G4int fPhiId = -1;
+  */
   /// Position
   G4ThreeVector fPos = { -1, -1, -1 };
   /// Rotation
