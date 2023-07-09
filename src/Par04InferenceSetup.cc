@@ -160,7 +160,12 @@ void Par04InferenceSetup::GetPositions(std::vector<G4ThreeVector>& aPositions, G
 				       G4float theta, G4float phi)
 {
   aPositions.resize(fMeshNumber.x() * fMeshNumber.y() * fMeshNumber.z());
-  
+
+  // Attempt in calculating the reconstructed trajectory of the particle by implementing
+  // the matrix reconstruction method - use a (3 * 3) matrix to convert the (51, 51, 25)
+  // cube into the global detector frame - This attmpt failed due to the wrong conversion parameters
+  // of the matrix
+	
   /*
   // Calculate rotation matrix along the particle momentum direction
   // It will rotate the shower axes to match the incoming particle direction
@@ -227,17 +232,20 @@ void Par04InferenceSetup::GetPositions(std::vector<G4ThreeVector>& aPositions, G
       }
     }
   }*/
+	
   // Print out the pos0 vector
   G4cout << "Pos 0 - x: " << G4BestUnit(pos0.getX(), "Length") << G4endl;
   G4cout << "Pos 0 - y: " << G4BestUnit(pos0.getY(), "Length") << G4endl;
   G4cout << "Pos 0 - z: " << G4BestUnit(pos0.getZ(), "Length") << G4endl;   
   // Iterate through the first layer of the cube and work out
   // the barycentre for the plane corresponding to z=0. Also define
-  // som variables for the barycentre coordinates for the z=0 plane
+  // some variables for the barycentre coordinates for the z=0 plane
   G4double bary_x = 0;
   G4double bary_y = 0;
 
-  // Now define variable for the energy sum in the cube
+  // Now define variable for the energy sum in the cube - calculate the 
+  // weigted centre of mass coordiante for the energy - Do this in the local
+  // 3D-GAN frame. 
   G4double E = 0;
   G4int cpt = 0;
 
@@ -266,7 +274,8 @@ void Par04InferenceSetup::GetPositions(std::vector<G4ThreeVector>& aPositions, G
   G4cout << "Coordinate y of 0-plane barycentre: " << G4BestUnit(bary_y, "Length") << " in units: " << bary_y << " and cell: "
 	 << std::floor(bary_y) << G4endl;
   
-  // Now get the barycentre of plane z=0 in global coordinates
+  // Now get the barycentre of plane z=0 in global coordinates - need the radius of the
+  // spherical coordinates
   G4float r = pos0.getY() / (std::sin(theta) * std::sin(phi));
 
   // Define now the x and z global coordinates of the barycentre of the
